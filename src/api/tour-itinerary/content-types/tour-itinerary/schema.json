@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_itineraries",
+  "info": {
+    "singularName": "tour-itinerary",
+    "pluralName": "tour-itineraries",
+    "displayName": "Tour Itinerary",
+    "description": "Daily itinerary for tours"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tour": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tour.tour",
+      "inversedBy": "itinerary"
+    },
+    "day": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "run": {
+      "type": "string",
+      "required": true
+    },
+    "meals": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

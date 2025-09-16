@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_inclusions",
+  "info": {
+    "singularName": "tour-inclusion",
+    "pluralName": "tour-inclusions",
+    "displayName": "Tour Inclusion",
+    "description": "What's included in the tour"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tour": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tour.tour",
+      "inversedBy": "inclusions"
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

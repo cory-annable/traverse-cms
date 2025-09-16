@@ -1,0 +1,113 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tours",
+  "info": {
+    "singularName": "tour",
+    "pluralName": "tours",
+    "displayName": "Tour",
+    "description": "Traverse Active Stays Tours"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "duration": {
+      "type": "string",
+      "required": true
+    },
+    "groupSize": {
+      "type": "string",
+      "required": true
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "enum": ["Easy", "Moderate", "Challenging", "Level 2", "All levels"],
+      "required": true
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "distance": {
+      "type": "string",
+      "required": true
+    },
+    "elevation": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "published", "coming_soon"],
+      "default": "draft"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "showButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "showPrice": {
+      "type": "boolean",
+      "default": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "galleryImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "highlights": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-highlight.tour-highlight",
+      "mappedBy": "tour"
+    },
+    "inclusions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-inclusion.tour-inclusion",
+      "mappedBy": "tour"
+    },
+    "itinerary": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-itinerary.tour-itinerary",
+      "mappedBy": "tour"
+    }
+  }
+}

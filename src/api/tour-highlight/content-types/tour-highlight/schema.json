@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_highlights",
+  "info": {
+    "singularName": "tour-highlight",
+    "pluralName": "tour-highlights",
+    "displayName": "Tour Highlight",
+    "description": "Tour highlights and key features"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tour": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tour.tour",
+      "inversedBy": "highlights"
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
