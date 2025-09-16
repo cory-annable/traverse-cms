@@ -108,6 +108,18 @@
       "relation": "oneToMany",
       "target": "api::tour-itinerary.tour-itinerary",
       "mappedBy": "tour"
+    },
+    "tourDates": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tour-date.tour-date",
+      "mappedBy": "tour"
+    },
+    "roomTypes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::room-type.room-type",
+      "mappedBy": "tour"
     }
   }
 }
