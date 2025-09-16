@@ -33,11 +33,11 @@
       "type": "string",
       "required": true
     },
-    "difficulty": {
-      "type": "enumeration",
-      "enum": ["Easy", "Moderate", "Challenging", "Level 2", "All levels"],
-      "required": true
-    },
+"difficulty": {
+  "type": "enumeration",
+  "enum": ["Level 1", "Level 2", "Level 3", "Level 4"],
+  "required": true
+},
     "price": {
       "type": "string",
       "required": true
