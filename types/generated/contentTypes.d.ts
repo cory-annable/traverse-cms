@@ -751,6 +751,10 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     metaTitle: Schema.Attribute.String;
     price: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    roomTypes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::room-type.room-type'
+    >;
     shortDescription: Schema.Attribute.Text;
     showButton: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     showPrice: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
@@ -760,6 +764,10 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.DefaultTo<'draft'>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    tourDates: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tour-date.tour-date'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
