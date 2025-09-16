@@ -538,6 +538,73 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiRoomTypeRoomType extends Struct.CollectionTypeSchema {
+  collectionName: 'room_types';
+  info: {
+    displayName: 'Tour Room Type';
+    pluralName: 'room-types';
+    singularName: 'room-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    available: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    currency: Schema.Attribute.String & Schema.Attribute.DefaultTo<'NZD'>;
+    displayLabel: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::room-type.room-type'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    roomType: Schema.Attribute.String & Schema.Attribute.Required;
+    tour: Schema.Attribute.Relation<'manyToOne', 'api::tour.tour'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTourDateTourDate extends Struct.CollectionTypeSchema {
+  collectionName: 'tour_dates';
+  info: {
+    displayName: 'Tour Date';
+    pluralName: 'tour-dates';
+    singularName: 'tour-date';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    available: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    displayLabel: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tour-date.tour-date'
+    > &
+      Schema.Attribute.Private;
+    maxBookings: Schema.Attribute.Integer;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    tour: Schema.Attribute.Relation<'manyToOne', 'api::tour.tour'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTourHighlightTourHighlight
   extends Struct.CollectionTypeSchema {
   collectionName: 'tour_highlights';
@@ -654,7 +721,7 @@ export interface ApiTourTour extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
     difficulty: Schema.Attribute.Enumeration<
-      ['Easy', 'Moderate', 'Challenging', 'Level 2', 'All levels']
+      ['Level 1', 'Level 2', 'Level 3', 'Level 4']
     > &
       Schema.Attribute.Required;
     distance: Schema.Attribute.String & Schema.Attribute.Required;
@@ -1213,6 +1280,8 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
+      'api::room-type.room-type': ApiRoomTypeRoomType;
+      'api::tour-date.tour-date': ApiTourDateTourDate;
       'api::tour-highlight.tour-highlight': ApiTourHighlightTourHighlight;
       'api::tour-inclusion.tour-inclusion': ApiTourInclusionTourInclusion;
       'api::tour-itinerary.tour-itinerary': ApiTourItineraryTourItinerary;

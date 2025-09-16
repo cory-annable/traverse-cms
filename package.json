@@ -10,7 +10,8 @@
     "seed:example": "node ./scripts/seed.js",
     "seed:tours": "node ./scripts/seed-tours.js",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "test": "npm run build && jest --runInBand"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.15.0",
@@ -24,7 +25,10 @@
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"

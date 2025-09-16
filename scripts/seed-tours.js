@@ -276,6 +276,74 @@ async function importTours() {
           },
         });
       }
+
+      // Create tour dates
+      console.log('Creating tour dates...');
+      const tourDates = [
+        {
+          startDate: '2025-10-31',
+          displayLabel: '31st October 2025',
+          available: true,
+          order: 1
+        },
+        {
+          startDate: '2026-01-30',
+          displayLabel: '30th January 2026',
+          available: true,
+          order: 2
+        }
+      ];
+
+      for (const td of tourDates) {
+        await createEntry({
+          model: 'tour-date',
+          entry: {
+            tour: tour.id,
+            startDate: td.startDate,
+            displayLabel: td.displayLabel,
+            available: td.available,
+            order: td.order,
+            publishedAt: new Date().toISOString(),
+          },
+        });
+      }
+
+      // Create room types
+      console.log('Creating room types...');
+      const roomTypes = [
+        {
+          roomType: 'triple-share',
+          displayLabel: 'Triple share with ensuite',
+          price: 995,
+          currency: 'NZD',
+          available: true,
+          order: 1
+        },
+        {
+          roomType: 'twin-share',
+          displayLabel: 'Twin share with ensuite',
+          price: 1095,
+          currency: 'NZD',
+          available: true,
+          order: 2
+        }
+      ];
+
+      for (const rt of roomTypes) {
+        await createEntry({
+          model: 'room-type',
+          entry: {
+            tour: tour.id,
+            roomType: rt.roomType,
+            displayLabel: rt.displayLabel,
+            price: rt.price,
+            currency: rt.currency,
+            available: rt.available,
+            order: rt.order,
+            publishedAt: new Date().toISOString(),
+          },
+        });
+      }
     } else {
       console.error('Could not find created tour!');
     }
@@ -352,6 +420,8 @@ async function importTourData() {
     'tour-highlight': ['find', 'findOne'],
     'tour-inclusion': ['find', 'findOne'],
     'tour-itinerary': ['find', 'findOne'],
+    'tour-date': ['find', 'findOne'],
+    'room-type': ['find', 'findOne'],
   });
 
   // Create all tour entries
